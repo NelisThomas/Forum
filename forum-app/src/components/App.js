@@ -1,13 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        hello
-      </div>
-    );
+import PostsContainer from './wholes/PostsContainer';
+import MakePostButton from './wholes/MakePostButton';
+import PostModal from './wholes/PostModal';
+
+const App = () => {
+  
+  const [postModalOpen, setPostModalOpen] = useState(false);
+
+  const xo = () => {
+    console.log('yeet');
+    setPostModalOpen(true);
   }
+
+  return (
+    <div className="App">
+
+      {`post modal: ${postModalOpen}`}
+      {postModalOpen && 
+        <PostModal
+          closeModal={() => setPostModalOpen(false)}
+        />
+      }
+
+      <PostsContainer/>
+
+      <MakePostButton
+        openModal={() => setPostModalOpen(true)}
+      />
+      
+    </div>
+  );
 }
 
 export default App;
