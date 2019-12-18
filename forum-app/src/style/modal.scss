@@ -12,6 +12,7 @@
         background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     }
     &ContentContainer {
+        z-index: 2;
         background-color: #fefefe;
         margin: auto;
         padding: 20px;
@@ -26,5 +27,7 @@
     &CloseButton {
         position: absolute;
         right: 10%;
+        background-color: red;
+        color: white;
     }
 }

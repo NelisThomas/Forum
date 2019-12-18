@@ -15,19 +15,17 @@ const App = () => {
 
   return (
     <div className="App">
-
-      {`post modal: ${postModalOpen}`}
       {postModalOpen && 
         <PostModal
           closeModal={() => setPostModalOpen(false)}
         />
       }
 
-      <PostsContainer/>
-
       <MakePostButton
         openModal={() => setPostModalOpen(true)}
       />
+
+      <PostsContainer/>
       
     </div>
   );

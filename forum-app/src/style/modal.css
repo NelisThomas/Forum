@@ -19,6 +19,7 @@
   /* Black w/ opacity */
 }
 .modalContentContainer {
+  z-index: 2;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -33,6 +34,8 @@
 .modalCloseButton {
   position: absolute;
   right: 10%;
+  background-color: red;
+  color: white;
 }
 
 /*# sourceMappingURL=modal.css.map */

@@ -3,10 +3,12 @@ const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 const db = require('./config/db');
 const app = express();
+const cors = require('cors');
 const port = require('../config/ports').backendPort;
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 MongoClient.connect(db.URL, (err, database) => {
     if (err) return console.log(err)

@@ -1,2 +1,2 @@
-const noteRoutes = require('./note_routes');
-module.exports = function(app, db) {  noteRoutes(app, db)};
+const routes = require('./routes');
+module.exports = function(app, db) {  routes(app, db)};

@@ -1,61 +1,71 @@
 import React, {useState} from 'react';
 import '../../style/modal.css';
 
-import FormInput from '../partials/FormInput';
-
-import submitFormArray from '../info/submitFormArray';
+const axios = require('axios');
 
 const PostModal = ({closeModal, returnData}) => {
 
     const [state, setState] = useState({
-        name: 'Anonymous',
-        text: ''
+        name: '',
+        text: '',
+        url:''
     })
 
-    const handleChange = (name, data) => {
+    const handleChange = (name, e) => {
+        const data = e.target.value;
         const stateObject = {...state};
         stateObject[name] = data;
         setState(stateObject);
     }
 
-    const handleSubmit = (e) => {
-        //Send state to backend request
-        e.preventDefault();
-        console.log(`Submitted a form:`,state);
+    const handleSubmit = () => {
+        console.log(state);
+        axios.post('http://localhost:8000/posts',state)
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch(er => console.log(er))
     }
 
     return (
         <div
             className="modalWrapper"
-        >
+            >
             <div
                 className="modalContentContainer"
-            >
+                >
                 <div
-                    className="modalCloseButton"
                     onClick={closeModal}
+                    className="modalCloseButton"
                 >
-                    x
+                    Close Modal
                 </div>
+
+                Name:
+                <input
+                    type='text'
+                    value={state.name}
+                    onChange={(e) => handleChange('name',e)}
+                /> <br/>
+
+                Text:
+                <input
+                    type='text'
+                    value={state.text}
+                    onChange={(e) => handleChange('text',e)}
+                /> <br/>
+
+                URL:
+                <input
+                    type='url'
+                    value={state.url}
+                    onChange={(e) => handleChange('url',e)}
+                /> <br/>
+
+                <button onClick={handleSubmit}>Submit</button>
+
+                {JSON.stringify(state)}
                 
-                <form
-                    onSubmit={handleSubmit}
-                    className="modalForm"
-                >
-                    {submitFormArray.map(({label,name,type,value}) => {
-                        return(
-                            <FormInput
-                                label={label}
-                                name={name}
-                                type={type}
-                                value={state[name]}
-                                returnData={(data) => handleChange(name,data)}
-                                key={name}
-                            />
-                        )
-                    })}
-                    <input type='submit' text='submit'/>
-                </form>
             </div>
         </div>
     )
