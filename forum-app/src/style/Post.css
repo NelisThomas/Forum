@@ -1,0 +1,70 @@
+.Post {
+  background-color: #200144;
+  margin: 10px 0 10px;
+  border: 5px solid #200144;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  border-radius: 10px;
+}
+.PostWrapper {
+  width: 80%;
+}
+.PostTextContainer {
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  background-color: #d4d4d4;
+}
+.PostTitleSpan {
+  font-size: large;
+  font-weight: bold;
+}
+.PostNameSpan {
+  font-size: small;
+  color: white;
+  width: 100%;
+  background-color: #200144;
+}
+.PostURLContainer {
+  padding: 5px 0 5px;
+  background-color: #200144;
+}
+.PostURLImg {
+  width: 100%;
+  border-radius: 3px;
+}
+.PostButton, .PostButtonDelete, .PostButtonEdit {
+  border-radius: 50%;
+  height: 7vh;
+  width: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: 2px solid white;
+  margin-left: 10px;
+}
+.PostButtonContainer {
+  font-size: 5vh;
+  position: relative;
+  bottom: 5.25vh;
+  display: flex;
+  justify-content: end;
+}
+.PostButtonEdit {
+  background-color: #0091aa;
+}
+.PostButtonEdit:hover {
+  background-color: #007185;
+  border: 2px solid black;
+}
+.PostButtonDelete {
+  background-color: #af0000;
+}
+.PostButtonDelete:hover {
+  background-color: #960000;
+  border: 2px solid black;
+}
+
+/*# sourceMappingURL=Post.css.map */

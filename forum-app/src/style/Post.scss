@@ -1,0 +1,79 @@
+$post-color: #200144;
+
+.Post{
+    &Wrapper{
+        width: 80%;
+    }
+    background-color: $post-color;
+    margin: 10px 0 10px;
+    border: 5px solid $post-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    border-radius: 10px;
+    
+    &TextContainer{
+        display: flex;
+        flex-direction: column;
+        border-radius: 3px;
+        background-color: #d4d4d4;
+    }
+    &TitleSpan{
+        font-size: large;
+        font-weight: bold;
+    }
+    &NameSpan{
+        font-size: small;
+        color: white;
+        width: 100%;
+        background-color: $post-color;
+    }
+    &TextDiv{
+
+    }
+    &URL{
+        &Container{
+            padding: 5px 0 5px;
+            background-color: $post-color;
+        }
+        &Img{
+            width: 100%;
+            border-radius: 3px;
+        }
+    }
+    &Button{
+        $button-size: 7vh;
+        &Container{
+            font-size: 5vh;
+            position: relative;
+            bottom: ($button-size/2)*1.5;
+            display: flex;
+            justify-content: end;
+        }
+        border-radius: 50%;
+        height: $button-size;
+        width: $button-size;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border: 2px solid white;
+        margin-left: 10px;
+        &Edit{
+            @extend .PostButton;
+            background-color: #0091aa;
+            &:hover{
+                background-color: #007185;
+                border: 2px solid black;
+            }
+        }
+        &Delete{
+            @extend .PostButton;
+            background-color: #af0000;
+            &:hover{
+                background-color: #960000;
+                border: 2px solid black;
+            }
+        }
+    }
+}

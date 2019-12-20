@@ -4,7 +4,6 @@ module.exports = function(app, db) {
 
     app.get('/posts/:id', (req, res) => {
         const details = { '_id': ObjectID };
-        console.log(details);
         db.collection('posts').findOne(details, (err, item) => {
             if(err) {
                 res.send({'error':'An error has occurred'});
@@ -21,13 +20,8 @@ module.exports = function(app, db) {
         });
     })
     app.post('/posts', (req, res) => {
-        // const {name,text,url} = req.body;
-        const post = {
-            name: req.body.name,
-            text: req.body.text,
-            url: req.body.url
-        };
-        console.log(req.body);
+        const data = req.body;
+        const post = JSON.parse(Object.keys(data)[0]);
         db.collection('posts').insert(post, (err, result) => {
             if (err) {
                 res.send({ 'error': 'An error has occurred' });
@@ -36,8 +30,8 @@ module.exports = function(app, db) {
             }
         });
     });
-    app.delete('/posts/:id', (req, res) => {
-        const id = req.params.id;
+    app.delete('/posts', (req, res) => {
+        const id = Object.keys(req.body)[0];
         const details = { '_id': new ObjectID(id) };
         db.collection('posts').remove(details, (err, item) => {
             if (err) {

@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
+import {post} from '../methods/backendCalls';
 import '../../style/modal.css';
 
-const axios = require('axios');
-
-const PostModal = ({closeModal, returnData}) => {
+const PostModal = ({closeModal,fetchPosts}) => {
 
     const [state, setState] = useState({
         name: '',
+        title: '',
         text: '',
         url:''
     })
@@ -19,12 +19,8 @@ const PostModal = ({closeModal, returnData}) => {
     }
 
     const handleSubmit = () => {
-        console.log(state);
-        axios.post('http://localhost:8000/posts',state)
-        .then((res) => {
-            console.log(res.data)
-        })
-        .catch(er => console.log(er))
+        post(state);
+        fetchPosts();
     }
 
     return (
@@ -46,6 +42,13 @@ const PostModal = ({closeModal, returnData}) => {
                     type='text'
                     value={state.name}
                     onChange={(e) => handleChange('name',e)}
+                /> <br/>
+
+                Title:
+                <input
+                    type='text'
+                    value={state.title}
+                    onChange={(e) => handleChange('title',e)}
                 /> <br/>
 
                 Text:
